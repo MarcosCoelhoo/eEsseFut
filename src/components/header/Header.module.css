@@ -1,0 +1,9 @@
+.container {
+  background: var(--black-900);
+  padding: 1.5rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}

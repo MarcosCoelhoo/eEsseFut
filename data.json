@@ -1,0 +1,92 @@
+[
+  {
+    "id": "AbCd1",
+    "title": "Futebol no Parque",
+    "hour": "17:00",
+    "date": "29/10",
+    "local": "Quadra da escola",
+    "description": "Um emocionante jogo de futebol com a galera, valendo dois refrigerantes para o time vencedor. Vai ser uma tarde cheia de diversão e rivalidade amigável.",
+    "author": "Turma do Ensino Médio"
+  },
+  {
+    "id": "EfGh2",
+    "title": "Partida de Amigos",
+    "hour": "18:30",
+    "date": "30/10",
+    "local": "Campo do bairro",
+    "description": "Participe de uma partida de futebol recreativa com seus amigos. Venha mostrar suas habilidades no campo e se divertir em boa companhia.",
+    "author": "Amigos do Bairro"
+  },
+  {
+    "id": "IjKl3",
+    "title": "Jogo Amistoso",
+    "hour": "16:00",
+    "date": "05/11",
+    "local": "Campo municipal",
+    "description": "Estamos organizando um jogo de futebol amistoso no campo municipal. Não importa o seu nível de habilidade, todos são bem-vindos para se juntar e se divertir.",
+    "author": "Equipe de Futebol Amador"
+  },
+  {
+    "id": "MnOp4",
+    "title": "Batalha na Quadra",
+    "hour": "19:00",
+    "date": "12/11",
+    "local": "Quadra esportiva",
+    "description": "Venha se juntar a nós para uma emocionante partida de futebol entre amigos na quadra esportiva. Traga sua melhor forma e sua alegria para o jogo.",
+    "author": "Grupo Esportivo Local"
+  },
+  {
+    "id": "QrSt5",
+    "title": "Futebol na Praia",
+    "hour": "17:30",
+    "date": "19/11",
+    "local": "Campo da praia",
+    "description": "Desfrute de uma partida de futebol descontraída na areia da praia. Não se preocupe com as regras rígidas, apenas se divirta e aproveite o jogo.",
+    "author": "Amigos de Verão"
+  },
+  {
+    "id": "UvWx6",
+    "title": "Desafio na Faculdade",
+    "hour": "16:45",
+    "date": "26/11",
+    "local": "Quadra da faculdade",
+    "description": "Estudantes, preparem-se para um jogo de futebol emocionante na quadra da faculdade. Será uma tarde cheia de camaradagem e competição saudável.",
+    "author": "Alunos Universitários"
+  },
+  {
+    "id": "YzAa7",
+    "title": "Recreação no Parque",
+    "hour": "18:15",
+    "date": "03/12",
+    "local": "Campo do parque",
+    "description": "Uma partida de futebol recreativo está marcada para acontecer no campo do parque. Todos são convidados a participar e aproveitar o jogo em um ambiente descontraído.",
+    "author": "Galera do Bairro"
+  },
+  {
+    "id": "BcDe8",
+    "title": "Futebol na Comunidade",
+    "hour": "17:30",
+    "date": "10/12",
+    "local": "Campo da comunidade",
+    "description": "Junte-se a nós para um jogo de futebol amigável no campo da comunidade. Vamos criar memórias incríveis e celebrar o espírito esportivo.",
+    "author": "Comunidade Local"
+  },
+  {
+    "id": "EfGh9",
+    "title": "Vizinhança Esportiva",
+    "hour": "16:00",
+    "date": "17/12",
+    "local": "Quadra da vizinhança",
+    "description": "Nossos vizinhos estão se reunindo para uma partida de futebol na quadra da vizinhança. Venha participar e fazer novos amigos enquanto joga.",
+    "author": "Vizinhos Unidos"
+  },
+  {
+    "id": "IjKl0",
+    "title": "Natal no Campo",
+    "hour": "18:00",
+    "date": "24/12",
+    "local": "Campo do clube",
+    "description": "Celebre o Natal com um jogo de futebol especial no campo do clube. Vai ser uma tarde festiva e esportiva. Traga seu espírito natalino e suas chuteiras!",
+    "author": "Clube de Natal"
+  }
+]

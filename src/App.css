@@ -36,3 +36,20 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  background: var(--black-950);
+
+
+  max-width: 75rem;
+  margin: 0 auto;
+}
+
+svg {
+  width: 100%;
+  max-width: 4rem;
+}
+
+ul, li {
+  list-style: none;
+}
