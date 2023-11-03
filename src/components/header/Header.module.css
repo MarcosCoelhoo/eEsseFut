@@ -4,6 +4,14 @@
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
   text-align: center;
+}
+
+.container.flexSpace {
+  justify-content: space-between;
+
+}
+
+.container.flexCenter {
+  justify-content: center;
 }
