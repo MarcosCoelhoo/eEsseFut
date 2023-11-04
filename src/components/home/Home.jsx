@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../header/Header';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ReactComponent as BallLogo } from '../../assets/images/ball.svg';
 import { ReactComponent as TimeIcon } from '../../assets/images/time.svg';
 import { ReactComponent as CalendarIcon } from '../../assets/images/calendar.svg';
@@ -9,14 +9,49 @@ import { ReactComponent as ArrowIcon } from '../../assets/images/arrow.svg';
 import backgroundImage from '../../assets/images/jmp.jpg';
 import Avatar from 'boring-avatars';
 
-import data from '../../../data.json';
+// import data from '../../../data.json';
 
 import styles from './Home.module.css';
 import Head from '../head/Head';
+import { getTimes } from '../../api';
 
 const arrayColors = ['#CFE92F', '#E2F561', '#141414', '#DF8458'];
 
 const Home = () => {
+  const [dataTimes, setDataTimes] = React.useState([]);
+  const navigate = useNavigate();
+
+  const saveScroll = (event) => {
+    event.preventDefault();
+
+    const pathPage = event.target.pathname;
+    window.sessionStorage.setItem('scroll', window.scrollY);
+    navigate(pathPage);
+    // console.log(event.target.pathname);
+  };
+
+  React.useEffect(() => {
+    const scroll = window.sessionStorage.getItem('scroll');
+    window.scrollTo({
+      top: scroll || 0,
+    });
+  });
+
+  React.useEffect(() => {
+    const fetchTimes = async () => {
+      try {
+        const data = await getTimes();
+
+        setDataTimes(data);
+      } catch (error) {
+        console.log(error);
+      }
+      // console.log(data);
+    };
+
+    fetchTimes();
+  }, []);
+
   return (
     <>
       <Head
@@ -40,7 +75,7 @@ const Home = () => {
           <h1 className={styles.titleSection}>Futs recentes</h1>
 
           <ul className={styles.listCards}>
-            {data.map(({ title, hour, date, local, id }) => (
+            {dataTimes.map(({ title, hour, date, local, id }) => (
               <li className={styles.card} key={id}>
                 <div className={styles.cardImage}>
                   <img src={backgroundImage} alt="Image time" />
@@ -65,7 +100,11 @@ const Home = () => {
                     <h2 className={styles.title}>{title}</h2>
                   </div>
 
-                  <Link to={`/${id}/time`} className={styles.button}>
+                  <Link
+                    onClick={saveScroll}
+                    to={`/${id}/time`}
+                    className={styles.button}
+                  >
                     <ArrowIcon />
                   </Link>
                 </div>

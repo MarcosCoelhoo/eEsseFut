@@ -8,12 +8,25 @@ import { ReactComponent as CalendarIcon } from '../../assets/images/calendar.svg
 import { ReactComponent as LocalIcon } from '../../assets/images/local.svg';
 import backgroundImage from '../../assets/images/jmp.jpg';
 
-import data from '../../../data.json';
+// import data from '../../../data.json';
 import Head from '../head/Head';
+import { getTimes } from '../../api';
 
 const Time = () => {
+  const [dataTime, setDataTime] = React.useState([]);
   const { id } = useParams();
-  const dataTime = data.filter((time) => id === time.id)[0];
+  // const dataTime = data.filter((time) => id === time.id)[0];
+
+  React.useEffect(() => {
+    const getTime = async () => {
+      const [data] = await getTimes(id);
+
+      setDataTime(data);
+      console.log(data);
+    };
+
+    getTime();
+  }, [id]);
 
   React.useEffect(() => {
     window.scrollTo({
@@ -42,7 +55,7 @@ const Time = () => {
               </p>
             </div>
 
-            <button className={styles.buttonConfirm}>Confirmar presença</button>
+            {/* <button className={styles.buttonConfirm}>Confirmar presença</button> */}
           </div>
 
           <ul className={styles.infoList}>

@@ -129,10 +129,15 @@
   box-shadow: var(--glow-effect);
   border-radius: 50%;
   transition: transform .3s;
+  cursor: pointer;
 }
 
 .button:hover {
   transform: scale(1.1);
+}
+
+.button svg {
+  pointer-events: none;
 }
 
 .buttonAdd {
