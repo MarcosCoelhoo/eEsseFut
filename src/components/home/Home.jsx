@@ -113,7 +113,7 @@ const Home = () => {
           </ul>
         </section>
 
-        <Link className={styles.buttonAdd} to="/marcar-fut">
+        <Link className={styles.buttonAdd} to="/schedule">
           <BallLogo />
         </Link>
       </main>
