@@ -37,11 +37,24 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  color: var(--black-100);
+  background: var(--principal-900);
+}
+
 body {
   background: var(--black-950);
 
   max-width: 75rem;
   margin: 0 auto;
+  height: 100vh;
+  height: 100dvh;
+}
+
+#root {
+  height: 100vh;
+  height: 100dvh;
+  
 }
 
 svg {
