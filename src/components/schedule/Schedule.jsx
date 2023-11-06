@@ -20,11 +20,55 @@ const Schedule = () => {
     description: '',
   });
 
-  const handleBlur = ({ target }) => {
-    console.log(target.id);
+  // const formatDate = (input) => {
+  //   let value = input.value;
 
-    // console.log(authorRef.current.value);
+  //   // Remova todos os caracteres não numéricos
+  //   value = value.replace(/\D/g, '');
 
+  //   // Garanta que o valor não seja maior que 4 dígitos
+  //   if (value.length > 4) {
+  //     value = value.slice(0, 4);
+  //   }
+
+  //   // Adicione a máscara (00/00)
+  //   if (value.length > 2) {
+  //     value = value.slice(0, 2) + '/' + value.slice(2);
+  //   }
+
+  //   input.value = value;
+  // };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // setInputValues({...inputValues, ['date']: })
+
+    console.log(inputValues);
+  };
+
+  const handleBlurInput = ({ target }) => {
+    if (target.id === 'date') {
+      // const dateFormated = target.value.split('-').slice(1).reverse().join('/');
+      const dateTs = target.valueAsNumber;
+
+      const date = new Date(dateTs);
+
+      const dateFormated = new Intl.DateTimeFormat('pt-BR', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'short',
+        timeZone: 'America/Sao_Paulo',
+      }).format(date);
+
+      console.log(dateFormated);
+      return setInputValues({
+        ...inputValues,
+        [target.id]: dateFormated,
+      });
+    }
+
+    console.log(target.value);
     setInputValues({ ...inputValues, [target.id]: target.value });
   };
 
@@ -40,8 +84,8 @@ const Schedule = () => {
       </Header>
 
       <main className={styles.main}>
-        <section className={styles.section}>
-          <form action="" className={styles.form}>
+        <section className={styles.section} onSubmit={handleSubmit}>
+          <form className={styles.form}>
             <div className={styles.inputContainer}>
               <label htmlFor="author" className={styles.inputLabel}>
                 Dono do horário
@@ -53,7 +97,7 @@ const Schedule = () => {
                   id="author"
                   name="author"
                   // ref={authorRef}
-                  onBlur={handleBlur}
+                  onBlur={handleBlurInput}
                   required
                 />
               </div>
@@ -68,7 +112,7 @@ const Schedule = () => {
                   placeholder="Ex.: Fut no campo da torre com a galera do toty"
                   id="title"
                   name="title"
-                  // onBlur={handleBlur}
+                  onBlur={handleBlurInput}
                   required
                 />
               </div>
@@ -83,7 +127,7 @@ const Schedule = () => {
                   placeholder="Ex.: Campo do nenem"
                   id="local"
                   name="local"
-                  // onBlur={handleBlur}
+                  onBlur={handleBlurInput}
                   required
                 />
               </div>
@@ -94,13 +138,11 @@ const Schedule = () => {
               </label>
               <div className={styles.inputBox}>
                 <input
-                  type="text"
+                  type="date"
                   placeholder="Ex.: 11/09"
                   id="date"
                   name="date"
-                  // pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])"
-                  maxLength={5}
-                  // onBlur={handleBlur}
+                  onBlur={handleBlurInput}
                   required
                 />
                 <input
@@ -110,14 +152,14 @@ const Schedule = () => {
                   name="hour"
                   min="06:00"
                   max="23:59"
-                  // onBlur={handleBlur}
+                  onBlur={handleBlurInput}
                   required
                 />
               </div>
             </div>
 
             <div className={styles.inputContainer}>
-              <label htmlFor="local" className={styles.inputLabel}>
+              <label htmlFor="description" className={styles.inputLabel}>
                 Descrição do fut (opcional)
               </label>
               <div className={styles.inputBox}>
@@ -127,7 +169,7 @@ const Schedule = () => {
                   cols="5"
                   rows="5"
                   placeholder="Vai rolar apostado contra a galera da mario covas bora ganhar porraaaa 🙉🙉🙉🎉🎉🎉"
-                  // onBlur={handleBlur}
+                  onBlur={handleBlurInput}
                 ></textarea>
               </div>
             </div>
