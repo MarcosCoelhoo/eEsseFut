@@ -62,13 +62,7 @@
   box-shadow: var(--glow-effect);
 }
 
-.buttonContainer {
-  /* outline: 1px solid blue; */
-  height: 100%;
-  /* justify-self: flex-end; */
-  /* display: flex;
-  align-items: end; */
-}
+
 
 .button {
   background: var(--principal-400);
@@ -77,15 +71,16 @@
   border-radius: 0.5rem;
   outline: none;
   border: 2px solid transparent;
-  box-shadow: var(--glow-effect);
   font-family: var(--font-title);
   font-size: 1.5rem;
   letter-spacing: 0.125rem;
   font-weight: 700;
   text-transform: uppercase;
   cursor: pointer;
+  transition: box-shadow .3s;
 }
 
 .button:hover, .button:focus {
+  box-shadow: var(--glow-effect);
   border-color: var(--black-100);
 }
