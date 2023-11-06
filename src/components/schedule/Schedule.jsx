@@ -5,12 +5,6 @@ import Header from '../header/Header';
 import styles from './Schedule.module.css';
 
 const Schedule = () => {
-  // const authorRef = React.useRef();
-  // const titleRef = React.useRef();
-  // const localRef = React.useRef();
-  // const dateRef = React.useRef();
-  // const hourRef = React.useRef();
-  // const descriptionRef = React.useRef();
   const [inputValues, setInputValues] = React.useState({
     author: '',
     title: '',
@@ -20,36 +14,14 @@ const Schedule = () => {
     description: '',
   });
 
-  // const formatDate = (input) => {
-  //   let value = input.value;
-
-  //   // Remova todos os caracteres não numéricos
-  //   value = value.replace(/\D/g, '');
-
-  //   // Garanta que o valor não seja maior que 4 dígitos
-  //   if (value.length > 4) {
-  //     value = value.slice(0, 4);
-  //   }
-
-  //   // Adicione a máscara (00/00)
-  //   if (value.length > 2) {
-  //     value = value.slice(0, 2) + '/' + value.slice(2);
-  //   }
-
-  //   input.value = value;
-  // };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // setInputValues({...inputValues, ['date']: })
 
     console.log(inputValues);
   };
 
   const handleBlurInput = ({ target }) => {
     if (target.id === 'date') {
-      // const dateFormated = target.value.split('-').slice(1).reverse().join('/');
       const dateTs = target.valueAsNumber;
 
       const date = new Date(dateTs);
