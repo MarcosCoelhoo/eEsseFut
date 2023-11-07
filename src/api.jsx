@@ -12,3 +12,13 @@ export const getTimes = async (idTime = '') => {
     return [];
   }
 };
+
+export const postTimes = async (body) => {
+  try {
+    const { data } = await axios.post(`${API_URL}`, body);
+    return data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
