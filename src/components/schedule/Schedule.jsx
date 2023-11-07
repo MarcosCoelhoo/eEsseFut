@@ -3,6 +3,7 @@ import Head from '../head/Head';
 import Header from '../header/Header';
 
 import styles from './Schedule.module.css';
+import { postTimes } from '../../api';
 
 const Schedule = () => {
   const [inputValues, setInputValues] = React.useState({
@@ -14,10 +15,12 @@ const Schedule = () => {
     description: '',
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(inputValues);
+    const dataFetch = await postTimes(inputValues);
+
+    console.log(dataFetch);
   };
 
   const handleBlurInput = ({ target }) => {
@@ -25,22 +28,25 @@ const Schedule = () => {
       const dateTs = target.valueAsNumber;
 
       const date = new Date(dateTs);
+      date.setUTCHours(0, 0, 0, 0);
 
-      const dateFormated = new Intl.DateTimeFormat('pt-BR', {
+      const optionsDate = {
         weekday: 'long',
         day: 'numeric',
         month: 'short',
-        timeZone: 'America/Sao_Paulo',
-      }).format(date);
+        timeZone: 'UTC',
+      };
 
-      console.log(dateFormated);
+      const dateFormated = new Intl.DateTimeFormat('pt-BR', optionsDate).format(
+        date,
+      );
+
       return setInputValues({
         ...inputValues,
         [target.id]: dateFormated,
       });
     }
 
-    console.log(target.value);
     setInputValues({ ...inputValues, [target.id]: target.value });
   };
 
