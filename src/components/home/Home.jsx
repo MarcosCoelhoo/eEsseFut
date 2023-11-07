@@ -9,8 +9,6 @@ import { ReactComponent as ArrowIcon } from '../../assets/images/arrow.svg';
 import backgroundImage from '../../assets/images/jmp.jpg';
 import Avatar from 'boring-avatars';
 
-// import data from '../../../data.json';
-
 import styles from './Home.module.css';
 import Head from '../head/Head';
 import { getTimes } from '../../api';
@@ -27,7 +25,6 @@ const Home = () => {
     const pathPage = event.target.pathname;
     window.sessionStorage.setItem('scroll', window.scrollY);
     navigate(pathPage);
-    // console.log(event.target.pathname);
   };
 
   React.useEffect(() => {
@@ -46,7 +43,6 @@ const Home = () => {
       } catch (error) {
         console.log(error);
       }
-      // console.log(data);
     };
 
     fetchTimes();
@@ -89,7 +85,7 @@ const Home = () => {
                       </li>
                       <li>
                         <CalendarIcon width={32} height={32} />
-                        {date}
+                        {date.split(', ')[1]}
                       </li>
                       <li>
                         <LocalIcon width={32} height={32} />

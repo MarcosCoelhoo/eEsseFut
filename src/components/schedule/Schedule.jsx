@@ -4,6 +4,7 @@ import Header from '../header/Header';
 
 import styles from './Schedule.module.css';
 import { postTimes } from '../../api';
+import { useNavigate } from 'react-router-dom';
 
 const Schedule = () => {
   const [inputValues, setInputValues] = React.useState({
@@ -14,16 +15,42 @@ const Schedule = () => {
     hour: '',
     description: '',
   });
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const dataFetch = await postTimes(inputValues);
 
-    console.log(dataFetch);
+    navigate('/');
+
+    console.log(inputValues);
   };
 
-  const handleBlurInput = ({ target }) => {
+  // const formatDate = ({ target }) => {
+  //   const dateTs = target.valueAsNumber;
+
+  //   const date = new Date(dateTs);
+  //   date.setUTCHours(0, 0, 0, 0);
+
+  //   const optionsDate = {
+  //     weekday: 'long',
+  //     day: 'numeric',
+  //     month: 'short',
+  //     timeZone: 'UTC',
+  //   };
+
+  //   const dateFormated = new Intl.DateTimeFormat('pt-BR', optionsDate).format(
+  //     date,
+  //   );
+
+  //   return setInputValues({
+  //     ...inputValues,
+  //     [target.id]: dateFormated,
+  //   });
+  // };
+
+  const handleChangeInput = ({ target }) => {
     if (target.id === 'date') {
       const dateTs = target.valueAsNumber;
 
@@ -74,8 +101,9 @@ const Schedule = () => {
                   placeholder="Ex.: Galera da ponte do macaco"
                   id="author"
                   name="author"
+                  // value={inputValues.author}
                   // ref={authorRef}
-                  onBlur={handleBlurInput}
+                  onBlur={handleChangeInput}
                   required
                 />
               </div>
@@ -90,7 +118,8 @@ const Schedule = () => {
                   placeholder="Ex.: Fut no campo da torre com a galera do toty"
                   id="title"
                   name="title"
-                  onBlur={handleBlurInput}
+                  // value={inputValues.title}
+                  onBlur={handleChangeInput}
                   required
                 />
               </div>
@@ -105,7 +134,8 @@ const Schedule = () => {
                   placeholder="Ex.: Campo do nenem"
                   id="local"
                   name="local"
-                  onBlur={handleBlurInput}
+                  // value={inputValues.local}
+                  onBlur={handleChangeInput}
                   required
                 />
               </div>
@@ -117,10 +147,12 @@ const Schedule = () => {
               <div className={styles.inputBox}>
                 <input
                   type="date"
-                  placeholder="Ex.: 11/09"
+                  placeholder="Ex.: 11/09/2023"
                   id="date"
                   name="date"
-                  onBlur={handleBlurInput}
+                  // value={inputValues.date}
+                  onBlur={handleChangeInput}
+                  // onBlur={formatDate}
                   required
                 />
                 <input
@@ -130,7 +162,8 @@ const Schedule = () => {
                   name="hour"
                   min="06:00"
                   max="23:59"
-                  onBlur={handleBlurInput}
+                  // value={inputValues.hour}
+                  onBlur={handleChangeInput}
                   required
                 />
               </div>
@@ -146,8 +179,9 @@ const Schedule = () => {
                   id="description"
                   cols="5"
                   rows="5"
+                  // value={inputValues.description}
                   placeholder="Vai rolar apostado contra a galera da mario covas bora ganhar porraaaa 🙉🙉🙉🎉🎉🎉"
-                  onBlur={handleBlurInput}
+                  onBlur={handleChangeInput}
                 ></textarea>
               </div>
             </div>

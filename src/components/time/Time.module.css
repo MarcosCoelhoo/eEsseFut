@@ -123,6 +123,11 @@
   border-radius: 0.5rem;
 }
 
+.descriptionBox .noContent {
+  color: var(--black-200);
+  font-weight: 600;
+}
+
 @media (max-width: 37.5rem) {
   .title {
     font-size: 2rem;

@@ -8,21 +8,17 @@ import { ReactComponent as CalendarIcon } from '../../assets/images/calendar.svg
 import { ReactComponent as LocalIcon } from '../../assets/images/local.svg';
 import backgroundImage from '../../assets/images/jmp.jpg';
 
-// import data from '../../../data.json';
 import Head from '../head/Head';
 import { getTimes } from '../../api';
 
 const Time = () => {
-  const [dataTime, setDataTime] = React.useState([]);
+  const [dataTime, setDataTime] = React.useState(null);
   const { id } = useParams();
-  // const dataTime = data.filter((time) => id === time.id)[0];
 
   React.useEffect(() => {
     const getTime = async () => {
       const [data] = await getTimes(id);
-
       setDataTime(data);
-      console.log(data);
     };
 
     getTime();
@@ -34,9 +30,13 @@ const Time = () => {
     });
   }, []);
 
+  if (dataTime === null) return <></>;
   return (
     <>
-      <Head title={dataTime.title} description={dataTime.description} />
+      <Head
+        title={`eEsseFut? | ${dataTime.title}`}
+        description={dataTime.description}
+      />
 
       <Header space={false}>
         <h1 className={styles.titleHeader}>Informações do Fut</h1>
@@ -83,7 +83,13 @@ const Time = () => {
             <h2 className={styles.descriptionTitle}>Descrição do fut</h2>
 
             <div className={styles.descriptionBox}>
-              <p>{dataTime.description}</p>
+              {dataTime.description.trim() ? (
+                <p>{dataTime.description}</p>
+              ) : (
+                <p className={styles.noContent}>
+                  O autor não colocou descrição :(
+                </p>
+              )}
             </div>
           </div>
         </section>
