@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3333/times';
+const API_URL = 'https://eessefut-api.onrender.com/times';
 
 export const getTimes = async (idTime = '') => {
   try {
