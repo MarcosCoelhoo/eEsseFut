@@ -11,7 +11,7 @@
 }
 
 .form {
-  /* max-height: 100vh; */
+  
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -48,7 +48,7 @@
   color: var(--principal-400);
   font-weight: 600;
   font-size: 1.25rem;
-  /* accent-color: var(--principal-400); */
+  
   transition: box-shadow .3s;
 }
 
@@ -58,7 +58,7 @@
 
 .inputBox input:focus,
 .inputBox textarea:focus {
-  /* border-color: var(--black-100); */
+  
   box-shadow: var(--glow-effect);
 }
 

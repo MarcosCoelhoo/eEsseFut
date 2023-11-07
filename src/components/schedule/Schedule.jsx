@@ -20,35 +20,12 @@ const Schedule = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const dataFetch = await postTimes(inputValues);
+    await postTimes(inputValues);
 
     navigate('/');
 
     console.log(inputValues);
   };
-
-  // const formatDate = ({ target }) => {
-  //   const dateTs = target.valueAsNumber;
-
-  //   const date = new Date(dateTs);
-  //   date.setUTCHours(0, 0, 0, 0);
-
-  //   const optionsDate = {
-  //     weekday: 'long',
-  //     day: 'numeric',
-  //     month: 'short',
-  //     timeZone: 'UTC',
-  //   };
-
-  //   const dateFormated = new Intl.DateTimeFormat('pt-BR', optionsDate).format(
-  //     date,
-  //   );
-
-  //   return setInputValues({
-  //     ...inputValues,
-  //     [target.id]: dateFormated,
-  //   });
-  // };
 
   const handleChangeInput = ({ target }) => {
     if (target.id === 'date') {
@@ -101,8 +78,6 @@ const Schedule = () => {
                   placeholder="Ex.: Galera da ponte do macaco"
                   id="author"
                   name="author"
-                  // value={inputValues.author}
-                  // ref={authorRef}
                   onBlur={handleChangeInput}
                   required
                 />
@@ -118,7 +93,6 @@ const Schedule = () => {
                   placeholder="Ex.: Fut no campo da torre com a galera do toty"
                   id="title"
                   name="title"
-                  // value={inputValues.title}
                   onBlur={handleChangeInput}
                   required
                 />
@@ -134,7 +108,6 @@ const Schedule = () => {
                   placeholder="Ex.: Campo do nenem"
                   id="local"
                   name="local"
-                  // value={inputValues.local}
                   onBlur={handleChangeInput}
                   required
                 />
@@ -150,9 +123,7 @@ const Schedule = () => {
                   placeholder="Ex.: 11/09/2023"
                   id="date"
                   name="date"
-                  // value={inputValues.date}
                   onBlur={handleChangeInput}
-                  // onBlur={formatDate}
                   required
                 />
                 <input
@@ -162,7 +133,6 @@ const Schedule = () => {
                   name="hour"
                   min="06:00"
                   max="23:59"
-                  // value={inputValues.hour}
                   onBlur={handleChangeInput}
                   required
                 />
@@ -179,7 +149,6 @@ const Schedule = () => {
                   id="description"
                   cols="5"
                   rows="5"
-                  // value={inputValues.description}
                   placeholder="Vai rolar apostado contra a galera da mario covas bora ganhar porraaaa 🙉🙉🙉🎉🎉🎉"
                   onBlur={handleChangeInput}
                 ></textarea>
