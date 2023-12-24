@@ -12,12 +12,14 @@ import Avatar from 'boring-avatars';
 import styles from './Home.module.css';
 import Head from '../head/Head';
 import { getTimes } from '../../api';
+import Loading from '../helper/loading/Loading';
 
 const arrayColors = ['#CFE92F', '#E2F561', '#141414', '#DF8458'];
 
 const Home = () => {
   const [dataTimes, setDataTimes] = React.useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = React.useState(false);
 
   const saveScroll = (event) => {
     event.preventDefault();
@@ -37,11 +39,16 @@ const Home = () => {
   React.useEffect(() => {
     const fetchTimes = async () => {
       try {
-        const data = await getTimes();
+        console.log('Puxando dados...');
+        setLoading(true);
 
+        const data = await getTimes();
         setDataTimes(data);
+        console.log('dados puxados: ', data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -71,10 +78,11 @@ const Home = () => {
           <h1 className={styles.titleSection}>Futs recentes</h1>
 
           <ul className={styles.listCards}>
+            {loading ? <Loading /> : <></>}
             {dataTimes.map(({ title, hour, date, local, id }) => (
               <li className={styles.card} key={id}>
                 <div className={styles.cardImage}>
-                  <img src={backgroundImage} alt="Image time" />
+                  <img src={backgroundImage} alt="Image time" loading="lazy" />
                 </div>
                 <div className={styles.cardContent}>
                   <div className={styles.info}>
