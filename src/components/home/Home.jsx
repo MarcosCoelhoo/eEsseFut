@@ -87,18 +87,9 @@ const Home = () => {
                 <div className={styles.cardContent}>
                   <div className={styles.info}>
                     <ul className={styles.details}>
-                      <li>
-                        <TimeIcon width={32} height={32} />
-                        {hour}
-                      </li>
-                      <li>
-                        <CalendarIcon width={32} height={32} />
-                        {date.split(', ')[1]}
-                      </li>
-                      <li>
-                        <LocalIcon width={32} height={32} />
-                        {local}
-                      </li>
+                      <li>{hour}</li>
+                      <li>{date.split(', ')[1]}</li>
+                      <li>{local}</li>
                     </ul>
 
                     <h2 className={styles.title}>{title}</h2>
