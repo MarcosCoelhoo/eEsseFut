@@ -6,6 +6,7 @@ import Header from '../header/Header';
 import { ReactComponent as TimeIcon } from '../../assets/images/time.svg';
 import { ReactComponent as CalendarIcon } from '../../assets/images/calendar.svg';
 import { ReactComponent as LocalIcon } from '../../assets/images/local.svg';
+import { ReactComponent as BallLogo } from '../../assets/images/ball.svg';
 import backgroundImage from '../../assets/images/jmp.jpg';
 
 import Head from '../head/Head';
@@ -44,8 +45,13 @@ const Time = () => {
         description={dataTime.description}
       />
 
-      <Header space={false}>
-        <h1 className={styles.titleHeader}>Informações do Fut</h1>
+      <Header space={true}>
+        <div className={styles.logo}>
+          <a href="/">
+            <BallLogo width={64} height={64} />
+          </a>
+        </div>
+        <h1 className={styles.titleHeader}>Info. do Fut</h1>
       </Header>
       <div className={styles.image}>
         <img src={backgroundImage} alt="Image time" />

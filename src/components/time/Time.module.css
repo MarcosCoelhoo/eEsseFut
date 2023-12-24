@@ -31,6 +31,19 @@
   gap: 2rem;
 }
 
+.logo {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.logo * {
+  color: var(--principal-400);
+  stroke-width: 20px;
+}
+
 .title {
   color: var(--black-50);
   font-family: var(--font-title);
@@ -74,21 +87,29 @@
 
 .infoList {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 1.5rem;
+  justify-content: space-between;
 }
 
 .info {
   display: flex;
+  flex: 1;
+  flex-shrink: 0;
+  gap: 1rem;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   font-family: var(--font-text);
   font-size: 1.5rem;
-  font-weight: 600;
-  text-align: right;
+  font-weight: 500;
+  text-align: center;
   color: var(--black-50);
   border-bottom: 2px solid var(--black-700);
   padding-bottom: .75rem;
+  background: var(--black-600);
+  padding: 1rem;
+  border-radius: .5rem;
 }
 
 .infoIcon * {
@@ -117,7 +138,7 @@
 .descriptionBox {
   background: var(--black-600);
   font-family: var(--font-text);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--black-50);
   padding: 1.25rem 1rem;
   border-radius: 0.5rem;
