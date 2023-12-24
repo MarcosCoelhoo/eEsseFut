@@ -4,10 +4,16 @@ import styles from './Loading.module.css';
 
 const Loading = () => {
   return (
-    <div className={styles.loading}>
-      <span></span>
-      <span></span>
-      <span></span>
+    <div className={styles.container}>
+      <div className={styles.loader}>
+        <div className={styles.loaderSquare}></div>
+        <div className={styles.loaderSquare}></div>
+        <div className={styles.loaderSquare}></div>
+        <div className={styles.loaderSquare}></div>
+        <div className={styles.loaderSquare}></div>
+        <div className={styles.loaderSquare}></div>
+        <div className={styles.loaderSquare}></div>
+      </div>
     </div>
   );
 };
