@@ -10,21 +10,28 @@ import { ReactComponent as BallLogo } from '../../assets/images/ball.svg';
 import backgroundImage from '../../assets/images/jmp.jpg';
 
 import Head from '../head/Head';
+import Loading from '../helper/loading/Loading';
 import { getTimes } from '../../api';
-// import Loading from '../helper/loading/Loading';
 // import BgPattern from '../helper/pattern/BgPattern';
 
 const Time = () => {
   const [dataTime, setDataTime] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
   const { id } = useParams();
 
   React.useEffect(() => {
     const getTime = async () => {
       try {
+        console.log('puxando dados');
+        setLoading(true);
         const [data] = await getTimes(id);
+
         setDataTime(data);
+        console.log('dados puxados');
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -37,14 +44,13 @@ const Time = () => {
     });
   }, []);
 
-  if (dataTime === null) return <></>;
+  if (!dataTime) return <Loading />;
   return (
     <>
       <Head
         title={`eEsseFut? | ${dataTime.title}`}
         description={dataTime.description}
       />
-
       <Header space={true}>
         <div className={styles.logo}>
           <a href="/">
@@ -53,10 +59,10 @@ const Time = () => {
         </div>
         <h1 className={styles.titleHeader}>Info. do Fut</h1>
       </Header>
+      {/* <Loading /> */}
       <div className={styles.image}>
         <img src={backgroundImage} alt="Image time" />
       </div>
-
       <main className={styles.main}>
         <section className={styles.section}>
           <div className={styles.content}>
