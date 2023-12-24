@@ -10,6 +10,8 @@ import backgroundImage from '../../assets/images/jmp.jpg';
 
 import Head from '../head/Head';
 import { getTimes } from '../../api';
+// import Loading from '../helper/loading/Loading';
+// import BgPattern from '../helper/pattern/BgPattern';
 
 const Time = () => {
   const [dataTime, setDataTime] = React.useState(null);
@@ -17,8 +19,12 @@ const Time = () => {
 
   React.useEffect(() => {
     const getTime = async () => {
-      const [data] = await getTimes(id);
-      setDataTime(data);
+      try {
+        const [data] = await getTimes(id);
+        setDataTime(data);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     getTime();
