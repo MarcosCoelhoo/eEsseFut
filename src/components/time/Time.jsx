@@ -16,22 +16,18 @@ import { getTimes } from '../../api';
 
 const Time = () => {
   const [dataTime, setDataTime] = React.useState(null);
-  const [loading, setLoading] = React.useState(false);
   const { id } = useParams();
 
   React.useEffect(() => {
     const getTime = async () => {
       try {
         console.log('puxando dados');
-        setLoading(true);
         const [data] = await getTimes(id);
 
         setDataTime(data);
         console.log('dados puxados');
       } catch (error) {
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -61,7 +57,10 @@ const Time = () => {
       </Header>
       {/* <Loading /> */}
       <div className={styles.image}>
-        <img src={backgroundImage} alt="Image time" />
+        <img
+          src={`https://picsum.photos/seed/${dataTime.id}/1200/1300`}
+          alt="Image time"
+        />
       </div>
       <main className={styles.main}>
         <section className={styles.section}>

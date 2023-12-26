@@ -17,9 +17,8 @@ import Loading from '../helper/loading/Loading';
 const arrayColors = ['#CFE92F', '#E2F561', '#141414', '#DF8458'];
 
 const Home = () => {
-  const [dataTimes, setDataTimes] = React.useState([]);
+  const [dataTimes, setDataTimes] = React.useState(null);
   const navigate = useNavigate();
-  const [loading, setLoading] = React.useState(false);
 
   const saveScroll = (event) => {
     event.preventDefault();
@@ -40,21 +39,19 @@ const Home = () => {
     const fetchTimes = async () => {
       try {
         console.log('Puxando dados...');
-        setLoading(true);
 
         const data = await getTimes();
         setDataTimes(data);
         console.log('dados puxados: ', data);
       } catch (error) {
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchTimes();
   }, []);
 
+  if (!dataTimes) return <Loading />;
   return (
     <>
       <Head
@@ -78,11 +75,14 @@ const Home = () => {
           <h1 className={styles.titleSection}>Futs recentes</h1>
 
           <ul className={styles.listCards}>
-            {loading ? <Loading /> : <></>}
             {dataTimes.map(({ title, hour, date, local, id }) => (
               <li className={styles.card} key={id}>
                 <div className={styles.cardImage}>
-                  <img src={backgroundImage} alt="Image time" loading="lazy" />
+                  <img
+                    src={`https://picsum.photos/seed/${id}/1200/1300`}
+                    alt="Image time"
+                    loading="lazy"
+                  />
                 </div>
                 <div className={styles.cardContent}>
                   <div className={styles.info}>
